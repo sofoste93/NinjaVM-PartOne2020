@@ -142,33 +142,6 @@ NinjaVM_PartOne2020/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\NinjaVM_PartOne2020.dir\build.make CMakeFiles/NinjaVM_PartOne2020.dir/build
 .PHONY : NinjaVM_PartOne2020/fast
 
-mydg.obj: mydg.c.obj
-
-.PHONY : mydg.obj
-
-# target to build an object file
-mydg.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\NinjaVM_PartOne2020.dir\build.make CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj
-.PHONY : mydg.c.obj
-
-mydg.i: mydg.c.i
-
-.PHONY : mydg.i
-
-# target to preprocess a source file
-mydg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\NinjaVM_PartOne2020.dir\build.make CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.i
-.PHONY : mydg.c.i
-
-mydg.s: mydg.c.s
-
-.PHONY : mydg.s
-
-# target to generate assembly for a file
-mydg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\NinjaVM_PartOne2020.dir\build.make CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.s
-.PHONY : mydg.c.s
-
 njvm4.obj: njvm4.c.obj
 
 .PHONY : njvm4.obj
@@ -205,9 +178,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... NinjaVM_PartOne2020
-	@echo ... mydg.obj
-	@echo ... mydg.i
-	@echo ... mydg.s
 	@echo ... njvm4.obj
 	@echo ... njvm4.i
 	@echo ... njvm4.s

@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj"
   "CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj"
   "NinjaVM_PartOne2020.exe"
   "NinjaVM_PartOne2020.exe.manifest"
