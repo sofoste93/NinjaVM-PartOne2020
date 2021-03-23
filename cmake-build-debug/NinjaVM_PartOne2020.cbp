@@ -79,6 +79,9 @@
 		<Unit filename="C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/header.h">
 			<Option target="NinjaVM_PartOne2020"/>
 		</Unit>
+		<Unit filename="C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/mydg.c">
+			<Option target="NinjaVM_PartOne2020"/>
+		</Unit>
 		<Unit filename="C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/njvm4.c">
 			<Option target="NinjaVM_PartOne2020"/>
 		</Unit>

@@ -6,4 +6,4 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(NinjaVM_PartOne2020
-        njvm4.c header.h)
+        njvm4.c header.h mydg.c)

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/mydg.c" "C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/cmake-build-debug/CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj"
   "C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/njvm4.c" "C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/cmake-build-debug/CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
