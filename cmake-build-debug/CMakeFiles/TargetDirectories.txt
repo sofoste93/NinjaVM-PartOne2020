@@ -1,0 +1,3 @@
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/cmake-build-debug/CMakeFiles/NinjaVM_PartOne2020.dir
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/cmake-build-debug/CMakeFiles/rebuild_cache.dir

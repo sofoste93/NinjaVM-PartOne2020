@@ -1,0 +1,3 @@
+C:\Users\Dell\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\203.7717.62\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\NinjaVM_PartOne2020.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\NinjaVM_PartOne2020.dir/objects.a @CMakeFiles\NinjaVM_PartOne2020.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\NinjaVM_PartOne2020.dir/objects.a -Wl,--no-whole-archive  -o NinjaVM_PartOne2020.exe -Wl,--out-implib,libNinjaVM_PartOne2020.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\NinjaVM_PartOne2020.dir\linklibs.rsp

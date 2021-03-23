@@ -1,0 +1,4 @@
+C:\Users\Dell\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\203.7717.62\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/cmake-build-debug
