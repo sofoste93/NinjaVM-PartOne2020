@@ -1,0 +1,8 @@
+//
+// Created by sofoste on 23.03.2021.
+//
+
+#ifndef NINJAVM_PARTONE2020_NJVM4_H
+#define NINJAVM_PARTONE2020_NJVM4_H
+
+#endif //NINJAVM_PARTONE2020_NJVM4_H

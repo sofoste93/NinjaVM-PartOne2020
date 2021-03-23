@@ -76,24 +76,10 @@ include CMakeFiles/NinjaVM_PartOne2020.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/NinjaVM_PartOne2020.dir/flags.make
 
-CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj: CMakeFiles/NinjaVM_PartOne2020.dir/flags.make
-CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj: CMakeFiles/NinjaVM_PartOne2020.dir/includes_C.rsp
-CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj: ../njvm4.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\NinjaVM_PartOne2020.dir\njvm4.c.obj   -c C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\njvm4.c
-
-CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\njvm4.c > CMakeFiles\NinjaVM_PartOne2020.dir\njvm4.c.i
-
-CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\njvm4.c -o CMakeFiles\NinjaVM_PartOne2020.dir\njvm4.c.s
-
 CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj: CMakeFiles/NinjaVM_PartOne2020.dir/flags.make
 CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj: CMakeFiles/NinjaVM_PartOne2020.dir/includes_C.rsp
 CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj: ../mydg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj"
 	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\NinjaVM_PartOne2020.dir\mydg.c.obj   -c C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\mydg.c
 
 CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.i: cmake_force
@@ -104,16 +90,30 @@ CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.s"
 	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\mydg.c -o CMakeFiles\NinjaVM_PartOne2020.dir\mydg.c.s
 
+CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj: CMakeFiles/NinjaVM_PartOne2020.dir/flags.make
+CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj: CMakeFiles/NinjaVM_PartOne2020.dir/includes_C.rsp
+CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj: ../njvm4.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\NinjaVM_PartOne2020.dir\njvm4.c.obj   -c C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\njvm4.c
+
+CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\njvm4.c > CMakeFiles\NinjaVM_PartOne2020.dir\njvm4.c.i
+
+CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Dell\CLionProjects\NinjaVM-PartOne2020\njvm4.c -o CMakeFiles\NinjaVM_PartOne2020.dir\njvm4.c.s
+
 # Object files for target NinjaVM_PartOne2020
 NinjaVM_PartOne2020_OBJECTS = \
-"CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj" \
-"CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj"
+"CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj" \
+"CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj"
 
 # External object files for target NinjaVM_PartOne2020
 NinjaVM_PartOne2020_EXTERNAL_OBJECTS =
 
-NinjaVM_PartOne2020.exe: CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj
 NinjaVM_PartOne2020.exe: CMakeFiles/NinjaVM_PartOne2020.dir/mydg.c.obj
+NinjaVM_PartOne2020.exe: CMakeFiles/NinjaVM_PartOne2020.dir/njvm4.c.obj
 NinjaVM_PartOne2020.exe: CMakeFiles/NinjaVM_PartOne2020.dir/build.make
 NinjaVM_PartOne2020.exe: CMakeFiles/NinjaVM_PartOne2020.dir/linklibs.rsp
 NinjaVM_PartOne2020.exe: CMakeFiles/NinjaVM_PartOne2020.dir/objects1.rsp
