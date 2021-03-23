@@ -1,0 +1,42 @@
+global Integer money;
+void main(){
+ local Integer shop;
+ money=10000;
+ shop=20;
+ while(money>0){
+  writeCharacter(' ');
+  writeCharacter('a');
+  writeCharacter('c');
+  writeCharacter('t');
+  writeCharacter('u');
+  writeCharacter('a');
+  writeCharacter('l');
+  writeCharacter(':');
+  writeCharacter(' ');
+  writeInteger(money);
+  writeCharacter('$');
+  writeCharacter('\n');
+  writeCharacter('n');
+  writeCharacter('o');
+  writeCharacter('w');
+  writeCharacter(' ');
+  writeCharacter('y');
+  writeCharacter('o');
+  writeCharacter('u');
+  writeCharacter(' ');
+  writeCharacter('g');
+  writeCharacter('o');
+  writeCharacter('t'); 
+  writeCharacter(':');
+  writeCharacter(' ');
+  writeInteger(giverest(shop));
+  writeCharacter('$');
+  
+ }
+writeCharacter('\n');
+}
+
+Integer giverest(Integer s){
+  money=money-s;
+  return money;
+}

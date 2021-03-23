@@ -1,0 +1,15 @@
+global Integer c;
+void main(){
+    local Integer a; 
+    local Integer b;
+    c=67;
+    a=23;
+    b=43;
+
+    writeInteger(a);
+    writeCharacter('\n');
+    writeInteger(b);
+    writeCharacter('\n');
+    writeInteger(c);
+    writeCharacter('\n');
+}

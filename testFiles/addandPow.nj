@@ -1,0 +1,32 @@
+void main(){
+ local Integer n;
+  local Integer m;
+  local Integer o;
+  
+  n = readInteger();
+  m = readInteger();
+  o=addition(n,m);
+  
+  writeCharacter('(');
+  writeInteger(n);
+  writeCharacter('+');
+  writeInteger(m);
+  writeCharacter(')');
+  writeCharacter('*');
+  writeInteger(n+m);
+  writeCharacter('=');
+  writeInteger(o);
+  writeCharacter('\n');
+  
+}
+
+Integer addition(Integer n,Integer m){
+  return square(n+m);
+}
+
+Integer square(Integer num){
+  return num*num;
+}
+
+
+

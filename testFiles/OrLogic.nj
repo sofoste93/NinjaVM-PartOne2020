@@ -1,0 +1,12 @@
+void main(){
+    writeInteger(ff(4,-3,-5,1));
+    writeCharacter('\n');
+}
+
+Integer ff(Integer a, Integer b, Integer c, Integer d){
+    if((a>0 && b>0) || (c<0 && d<0))
+        return (a+b)*(c-d);
+    if((a<0 && b<0) || (c>0 && d>0))
+        return (a-b)/(c+d);
+    return (a-b)%(c+d);
+}

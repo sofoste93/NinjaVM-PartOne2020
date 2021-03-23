@@ -1,0 +1,58 @@
+void main(){
+  local Integer limit;
+  limit=readInteger();
+  addfractions(limit);
+}
+
+
+void addfractions(Integer limit){
+ local Integer num;
+ local Integer denom;
+ local Integer common;
+ local Integer i;
+ local Integer nextDenom;
+  i=1;
+ nextDenom=i+1;
+ num=1;
+ denom=i;
+ 
+  while(i<limit){
+  
+        if(denom!=nextDenom){
+            num=(num*nextDenom)+(denom*1);
+            denom=denom*nextDenom;
+        }
+        
+        else{
+            num=num+1;
+            denom=denom;
+        }
+        
+        common=ggT(num,denom);
+        num=num/common;
+        denom=denom/common;
+        
+      i=i+1;
+      nextDenom=nextDenom+1;
+   }
+   
+   writeInteger(num);
+   writeCharacter(' ');
+   writeCharacter('/'); 
+   writeCharacter(' ');
+   writeInteger(denom);
+   writeCharacter('\n');
+}
+
+
+Integer ggT(Integer x,Integer y){
+    
+ while (x != y) {
+    if (x > y) {
+      x = x - y;
+    } else {
+      y = y - x;
+    }
+  }
+  return x;
+}

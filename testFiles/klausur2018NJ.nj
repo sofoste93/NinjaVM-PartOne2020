@@ -1,0 +1,12 @@
+void main(){
+    writeInteger(k(4,-3));
+    writeCharacter('\n');
+}
+
+Integer k(Integer a, Integer b){
+    if(a>0 && b>0)
+        return a+b;
+    if(a<0 && b<0)
+        return a*b;
+    return a-b;
+}

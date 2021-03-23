@@ -1,0 +1,4 @@
+void main() {
+    writeInteger((3 + 4) * (10 - 4));  
+    writeCharacter('\n');
+}  

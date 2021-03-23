@@ -1,0 +1,13 @@
+void main(){
+    local Integer a;
+    local Integer b;
+    a=readInteger();
+    b=readInteger();
+    writeCharacter('c');
+    writeCharacter('a');
+    writeCharacter('l');
+    writeCharacter('c');
+    writeCharacter('=');
+    writeInteger(a+b);
+    writeCharacter('\n');
+}

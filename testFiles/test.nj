@@ -1,0 +1,7 @@
+void hi(){
+ writeCharacter('4');
+}
+
+void main(){
+ hi();
+}

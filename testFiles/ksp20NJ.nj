@@ -1,0 +1,13 @@
+void main(){
+	local Integer i;
+	i=0;
+	while(i<10){
+		writeInteger(print(i));
+		writeCharacter('\n');
+		i=i+1;
+	}
+}
+
+Integer print(Integer n){
+	return n+1;
+}

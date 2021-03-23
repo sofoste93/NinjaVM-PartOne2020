@@ -1,0 +1,42 @@
+type Pointr = record {
+	Integer x;
+	Integer y;
+};
+
+type Pointa = Integer[];
+
+
+
+Integer sumr(Integer a, Integer b){
+	local Pointr p;
+	p = new(Pointr);
+	p.x=a;
+	p.y=b;
+	return p.x + p.y;
+}
+
+Integer suma(Integer a, Integer b){
+	local Pointa p;
+	p = new(Integer[2]);
+	p[0] = a;
+	p[1] = b;
+	return p[0] + p[1];
+}
+
+void main(){
+    local Integer e;
+    local Integer f;
+    // declation always at first.
+
+	writeString("Geben Sie a:\n");
+	e = readInteger();
+	writeString("Geben Sie b:\n");
+	f = readInteger();
+	writeString("Resultat mit arrays: ");
+	writeInteger(suma(e,f));
+	writeCharacter('\n');
+	writeString("Resultat mit Record: ");
+	writeInteger(sumr(e,f));
+	writeCharacter('\n');
+	
+}

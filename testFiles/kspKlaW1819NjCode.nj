@@ -1,0 +1,29 @@
+void main(){
+local Integer[] a;
+a = new (Integer[3]);
+a[0]=123;
+a[1]=234;
+a[2]=345;
+writeString("result: ");
+writeInteger(func(a));
+writeCharacter('\n');
+
+}
+
+
+Integer func(Integer[] tab){
+local Integer a;
+local Integer b;
+local Integer c;
+
+a=sizeof(tab);
+b=0;
+c=0;
+
+  while(b<a){
+    c=c+(tab[b]*tab[b]);
+    b=b+1;
+  }
+
+ return c;
+}

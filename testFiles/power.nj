@@ -1,0 +1,58 @@
+void main(){
+local Integer a;
+local Integer b;
+writeCharacter('e');
+writeCharacter('n');
+writeCharacter('t');
+writeCharacter('e');
+writeCharacter('r');
+writeCharacter(' ');
+writeCharacter('n');
+writeCharacter('u');
+writeCharacter('m');
+writeCharacter('b');
+writeCharacter('e');
+writeCharacter('r');
+writeCharacter(':');
+writeCharacter('\n');
+
+a=readInteger();
+
+writeCharacter('e');
+writeCharacter('n');
+writeCharacter('t');
+writeCharacter('e');
+writeCharacter('r');
+writeCharacter(' ');
+writeCharacter('t');
+writeCharacter('h');
+writeCharacter('e');
+writeCharacter(' ');
+writeCharacter('g');
+writeCharacter('r');
+writeCharacter('a');
+writeCharacter('d');
+writeCharacter('e');
+writeCharacter(':');
+writeCharacter('\n');
+b=readInteger();
+
+writeInteger(a);
+writeCharacter('^');
+writeInteger(b);
+writeCharacter('=');
+writeInteger(power(a,b));
+writeCharacter('\n');
+}
+
+
+Integer power(Integer numb,Integer pow){
+  local Integer mul;
+  mul=numb;
+  if(pow==0) return 1;
+  while(pow>1){
+    numb=numb*mul;
+    pow=pow-1;
+  }
+  return numb;
+}

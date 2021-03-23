@@ -1,0 +1,40 @@
+type Matrix=record{
+   Integer spalte1;
+   Integer spalte2;
+};
+
+
+void main(){
+
+local Integer[] array;
+local Matrix str;
+
+array = new (Integer[2]);
+array[0]=324;
+array[1]=2321;
+
+str = new(Matrix);
+  
+
+str.spalte1=3;
+str.spalte2=4;
+
+
+writeString("matrix spalte1: ");
+writeInteger(str.spalte1);
+writeCharacter('\n');
+writeString("matrix spalte2: ");
+writeInteger(str.spalte2);
+writeCharacter('\n');
+
+fonc(array,0,1);
+
+}
+void fonc(Integer[] array,Integer a, Integer b){
+
+  writeInteger(array[a]);
+  writeCharacter('\n');
+  writeInteger(array[b]);
+  writeCharacter('\n');
+  
+}
