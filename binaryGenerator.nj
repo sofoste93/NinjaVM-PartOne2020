@@ -1,0 +1,481 @@
+void main(){
+   local CharList charArrayList0;
+   local CharList charArrayList1;
+   local CharList charArrayList2;
+   local CharList charArrayList3;
+   local CharList charArrayList4;
+   local StringMaker stingBuilder;
+   local Integer i;
+   local Integer j;
+   local String a;
+
+  //init 
+
+  stingBuilder=newStringMaker();
+  charArrayList0=newCharList();
+  charArrayList1=newCharList();
+  charArrayList2=newCharList();
+  charArrayList3=newCharList();
+  charArrayList4=newCharList();
+  
+  cAdd(charArrayList0,'h');
+  cAdd(charArrayList0,'a');
+  cAdd(charArrayList0,'l');
+  cAdd(charArrayList0,'l');
+  cAdd(charArrayList0,'o');
+  cAdd(charArrayList0,' ');
+
+  cAdd(charArrayList1,'w');
+  cAdd(charArrayList1,'i');
+  cAdd(charArrayList1,'e');
+  cAdd(charArrayList1,' ');
+
+  cAdd(charArrayList2,'g');
+  cAdd(charArrayList2,'e');
+  cAdd(charArrayList2,'h');
+  cAdd(charArrayList2,'t');
+  cAdd(charArrayList2,' ');
+
+  cAdd(charArrayList3,'e');
+  cAdd(charArrayList3,'s');
+  cAdd(charArrayList3,' ');
+
+  cAdd(charArrayList4,'d');
+  cAdd(charArrayList4,'i');
+  cAdd(charArrayList4,'r');
+
+  sAdd(stingBuilder,charArrayList0);
+  sAdd(stingBuilder,charArrayList1);
+  sAdd(stingBuilder,charArrayList2);
+  sAdd(stingBuilder,charArrayList3);
+  sAdd(stingBuilder,charArrayList4);
+
+i=0;
+while(i<sGetSize(stingBuilder)){
+  j=0;
+   while(j<cGetSize(sGet(stingBuilder,i))){
+     writeCharacter(cGet(sGet(stingBuilder,i),j));
+     j=j+1;
+   }
+   i=i+1;
+}
+writeCharacter('\n');
+
+    binaryGenerator(8);
+}
+
+
+
+Integer power(Integer numb,Integer pow){
+  local Integer mul;
+  mul=numb;
+  if(pow==0) return 1;
+  while(pow>1){
+    numb=numb*mul;
+    pow=pow-1;
+  }
+  return numb;
+}
+
+
+// INTEGER_ARRAY_LIST
+
+type IntList=record{
+  Integer[] array;
+  Integer capacity;
+  Integer in;
+};
+
+
+IntList newIntList(){
+ local IntList intList;
+ intList=new(IntList);
+ intList.in=0;
+ intList.array= new (Integer[1000]);
+ intList.capacity=1000;
+ return intList;
+}
+
+void add(IntList list,Integer x){
+ local Integer i;
+ i=list.in;
+ if(i==list.capacity){
+   list=increaseSize(list);
+ }
+ list.array[i]=x;
+ list.in=list.in+1;
+}
+
+Integer get(IntList list, Integer index){
+  if(index==list.capacity){
+    return -1;
+  }
+  if(index<0){
+    return -1;
+  }
+  if(isEmpty(list)){
+    return -1;
+  }
+  return list.array[index];
+}
+
+Integer getSize(IntList list){
+    return list.in;
+}
+
+
+Boolean remove(IntList list,Integer index){
+  local Integer i;
+  local Integer j;
+  if(index==list.capacity){
+    return false;
+  }
+  if(index<0){ return false;}
+  
+  i=index;
+  while(i<list.capacity){
+    j=i+1;
+    list.array[i]=list.array[j];
+    i=i+1;
+  }
+  list.in=list.in-1;
+
+  return true;
+}
+
+
+IntList increaseSize(IntList list){
+  local Integer[] newArray;
+  local Integer newSize;
+  local Integer i;
+  newSize=list.capacity*list.capacity;
+  newArray= new(Integer[newSize]);
+  list.array=newArray;
+  list.capacity=newSize;
+  return list;
+}
+
+Boolean isEmpty(IntList list){
+  if(list.in==0) return true;
+  return false;
+}
+
+
+void iClear(IntList list){
+    list=newIntList();
+}
+
+// STRING_MAKER  CLASS
+
+type StringMaker= record{
+  CharList[] buffer;
+  Integer capacity;
+  Integer in;
+};
+
+// Constructor
+
+StringMaker newStringMaker(){
+ local StringMaker stringMaker;
+ stringMaker=new(StringMaker);
+ stringMaker.in=0;
+ stringMaker.buffer=new(CharList[1000]);
+ stringMaker.capacity=1000;
+ return stringMaker;
+}
+
+// get Methode
+
+CharList sGet(StringMaker list, Integer index){
+  if(index==list.capacity){
+    return newCharList();
+  }
+  if(index<0){
+    return newCharList();
+  }
+  if(sIsEmpty(list)){
+    return newCharList();
+  }
+  return list.buffer[index];
+}
+
+// Add Methode
+
+void sAdd(StringMaker list,CharList charList){
+ local CharList charL;
+ local Integer i;
+ charL=newCharList();
+ i=list.in;
+ charL.array=charList.array;
+ charL.in=charList.in;
+ if(i==list.capacity){
+   list=sIncreaseSize(list);
+ }
+ list.buffer[i]=charL;
+ list.in=list.in+1;
+}
+
+
+// size Methode
+
+Integer sGetSize(StringMaker list){
+    return list.in;
+}
+
+
+
+// remove Methode
+
+Boolean sRemove(StringMaker list,Integer index){
+  local Integer i;
+  local Integer j;
+  if(index==list.capacity){
+    return false;
+  }
+  if(index<0){ return false;}
+  
+  i=index;
+  while(i<list.capacity){
+    j=i+1;
+    list.buffer[i]=list.buffer[j];
+    i=i+1;
+  }
+  list.in=list.in-1;
+
+  return true;
+}
+
+//increase Methode
+
+StringMaker sIncreaseSize(StringMaker list){
+  local CharList[] newBuffer;
+  local Integer newSize;
+  local Integer i;
+  newSize=list.capacity*list.capacity;
+  newBuffer=new(CharList[newSize]);
+  list.buffer=newBuffer;
+  list.capacity=newSize;
+  return list;
+}
+
+//isEmpty Methode
+
+Boolean sIsEmpty(StringMaker list){
+  if(list.in==0) return true;
+  return false;
+}
+
+void sClear(StringMaker list){
+    list=newStringMaker();
+}
+
+// CHARACTER_ARRAY_LIST
+
+type CharList=record{
+ Character[] array;
+ Integer capacity;
+ Integer in;
+};
+
+
+CharList newCharList(){
+ local CharList charList;
+ charList=new(CharList);
+ charList.in=0;
+ charList.array= new (Character[1000]);
+ charList.capacity=1000;
+ return charList;
+}
+
+void cAdd(CharList list,Character c){
+ local Integer i;
+ i=list.in;
+ if(i==list.capacity){
+   list=cIncreaseSize(list);
+ }
+ list.array[i]=c;
+ list.in=list.in+1;
+}
+
+Character cGet(CharList list, Integer index){
+  if(index==list.capacity){
+    return '$';
+  }
+  if(index<0){
+    return '$';
+  }
+  if(cIsEmpty(list)){
+    return '$';
+  }
+  return list.array[index];
+}
+
+
+Integer cGetSize(CharList list){
+    return list.in;
+}
+
+
+Boolean cRemove(CharList list,Integer index){
+  local Integer i;
+  local Integer j;
+  if(index==list.capacity){
+    return false;
+  }
+  if(index<0){ return false;}
+  
+  i=index;
+  while(i<list.capacity){
+    j=i+1;
+    list.array[i]=list.array[j];
+    i=i+1;
+  }
+  list.in=list.in-1;
+
+  return true;
+}
+
+
+CharList cIncreaseSize(CharList list){
+  local Character[] newArray;
+  local Integer newSize;
+  local Integer i;
+  newSize=list.capacity*list.capacity;
+  newArray= new(Character[newSize]);
+  list.array=newArray;
+  list.capacity=newSize;
+  return list;
+}
+
+Boolean cIsEmpty(CharList list){
+  if(list.in==0) return true;
+  return false;
+}
+
+CharList cClear(CharList list){
+    list.in=0;
+    return list;
+}
+
+
+// _BINARY_GENERATOR
+
+
+void binaryGenerator(Integer n){
+ local Integer numComp;
+ local Integer numCompPow;
+ local Integer nPow;
+ local Integer count;
+ local Integer x;
+ local Integer y;
+ local Integer i;
+ local Integer j;
+ local Integer k;
+ local Character[][] binary;
+ local CharList binaryComp;
+ local CharList list;
+ local CharList printList;
+ local CharList tmpBinComp;
+ local Integer listSize;
+ local StringMaker result;
+
+ //init 
+
+
+x=power(2,n);
+y=n;
+
+binary= new(Character[x][]);
+k=0;
+while(k<x){
+binary[k]= new(Character[y]);
+k=k+1;
+}
+
+
+binaryComp = newCharList();
+list = newCharList();
+result=newStringMaker();
+count=0;
+numComp=0;
+n=n-1;
+
+ while(n>=0){
+
+     //first while
+     numCompPow=power(2,numComp);
+
+    while(count<numCompPow){
+    
+         i=0;
+  
+         while(i<power(2,n)){
+            cAdd(list,'0');
+            i=i+1;
+          } // end first while of  second while
+
+
+         i=0;
+         while(i<power(2,n)){
+             cAdd(list,'1');
+           i=i+1;
+         }// end second while of  second while
+
+         count=count+1;
+       
+     }  //end second while
+     
+     i=0;
+     listSize=cGetSize(list);
+
+     while(i<listSize){
+         binary[i][numComp]=cGet(list,i);
+         i=i+1;
+     }
+
+     list=cClear(list); 
+
+     // end third while
+
+    count=0;
+    numComp=numComp+1;
+    n=n-1;
+    
+ }   //end first while
+
+
+// programierssprache  kcc  clann........
+
+
+ writeString("combination check\n");
+
+i=0;
+ while(i<x){
+    j=0;
+     while(j<y){
+       cAdd(binaryComp,binary[i][j]);
+      j=j+1;
+     }
+
+     //writeInteger(cGetSize(sGet(result,i)));
+     sAdd(result,binaryComp);
+     binaryComp=cClear(binaryComp);
+     i=i+1;
+  }
+
+  i=0;
+ writeString("binaryComp check\n");
+    while(i<sGetSize(result)){
+   writeInteger(i);
+   writeString(": ");
+     j=0;
+       while(j<cGetSize(sGet(result,i))){
+         writeCharacter(cGet(sGet(result,i),j));
+        j=j+1;
+      }
+      writeCharacter('\n');
+      i=i+1;
+  }
+  writeString("\n---End of Code---\n");
+
+}

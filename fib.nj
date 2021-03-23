@@ -1,0 +1,26 @@
+void main() {
+	local Integer result;
+	local Integer input;
+	input = readInteger();
+	result = fib(input);
+	writeInteger(result);
+	writeCharacter('\n');
+}
+
+// 0 + 1 = 1, 1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8, ...
+
+Integer fib(Integer n) {
+	local Integer lower;
+	local Integer higher;
+	local Integer res;
+	if (n < 2) return n;
+	lower = 0;
+	higher = 1;
+	while (n - 1 > 0) {
+		res = lower + higher;
+		lower = higher;
+		higher = res;
+		n = n - 1;
+	}
+	return res;
+}

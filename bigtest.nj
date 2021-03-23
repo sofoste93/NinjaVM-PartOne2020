@@ -1,0 +1,44 @@
+global Character c1;
+global Character c2;
+global Character c3;
+global Character c4;
+
+void main(){
+local Integer a;
+local Integer b;
+
+a=2018;
+b=2019;
+
+c1='2';
+c2='0';
+c3='2';
+c4='0';
+
+writeInteger(a);
+writeCharacter('-');
+writeCharacter('>');
+writeCharacter('n');
+writeCharacter('e');
+writeCharacter('x');
+writeCharacter('t');
+writeCharacter('-');
+writeCharacter('>');
+writeInteger(b);
+writeCharacter(' ');
+writeCharacter('n');
+writeCharacter('e');
+writeCharacter('x');
+writeCharacter('t');
+writeCharacter('-');
+writeCharacter('>');
+merge(c1,c2,c3,c4);
+}
+
+void merge(Character a,Character b, Character c,Character d){
+  writeCharacter(a);
+  writeCharacter(b);
+  writeCharacter(c);
+  writeCharacter(d);
+  writeCharacter('\n');
+}
