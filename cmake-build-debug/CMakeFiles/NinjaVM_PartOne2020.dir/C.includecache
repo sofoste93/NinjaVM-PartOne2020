@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/header.h
+
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/njvm4.c
+njvm4.h
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/njvm4.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+stdbool.h
+-
+time.h
+-
+header.h
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/header.h
+unixshell.h
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/unixshell.h
+
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/njvm4.h
+
+C:/Users/Dell/CLionProjects/NinjaVM-PartOne2020/unixshell.h
+
