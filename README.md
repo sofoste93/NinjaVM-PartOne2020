@@ -1,95 +1,113 @@
-# NinjaVM-PartOne2020
+# Ninja Virtual Machine · Part One
 
-# NINJA IS NOT JAVA
+[![CI](https://github.com/sofoste93/NinjaVM-PartOne2020/actions/workflows/ci.yml/badge.svg)](https://github.com/sofoste93/NinjaVM-PartOne2020/actions/workflows/ci.yml)
+[![C11](https://img.shields.io/badge/C-11-315d43)](https://en.cppreference.com/w/c/11)
+[![NJBF](https://img.shields.io/badge/NJBF-format%204-6f342e)](#the-njbf-file)
 
->
-> Ninja Virtual Machine >> "Ninja is not Java" #KSP20/21 
->
+**Ninja is not Java.** This repository preserves the first Ninja Virtual
+Machine project created for the KSP course at THM in Gießen during 2020/2021.
+It is a compact C implementation of a 32-bit stack machine and an archive of
+the Ninja and assembly exercises that accompanied it.
 
-The "bigint" Package
-====================
+![NinjaVM terminal running the answer example](docs/ninjavm-terminal.png)
 
-1. What is it?
---------------
+## Download
 
-This package implements a multiple-precision integer arithmetic package,
-i.e., a collection of functions which can calculate with integers having
-arbitrarily many digits. The algorithms are taken from [D. Knuth: The
-Art of Computer Programming, Vol. 2, Seminumerical Algorithms], the
-implementation language is C.
+The [latest release](https://github.com/sofoste93/NinjaVM-PartOne2020/releases/latest)
+contains native packages for:
 
+- Windows x64;
+- Linux x64;
+- macOS Intel;
+- macOS Apple Silicon.
 
-2. "Multiple Precision" - how does it work?
--------------------------------------------
+Extract the archive, open a terminal in that folder, then run:
 
-Each integer number is represented as an array of digits. The array
-is large enough to hold the number of digits necessary to represent
-the number. Each digit occupies a single byte, so the number base of
-this representation is 256. Addition, subtraction, and multiplication
-work as we all have learned it: perform the desired operation digit
-by digit, starting from the least significant digit, and observing
-any "carries" from one place to the next higher one. Division is a
-little bit more complicated because there is a certain amount of
-guesswork involved. Knuth gives a formal treatment of this guesswork.
+```text
+njvm --version
+njvm path/to/program.njbf
+```
 
+On Windows, use `njvm.exe`. The small `examples/answer.njbf` program is ready
+to run and prints `42`; no Ninja compiler is needed for this first test.
 
-3. How do I use it?
--------------------
+## Commands
 
-Because every big integer may have a differently sized array to hold
-its digits, these structures are dynamically allocated on the heap of
-the C runtime system, and accessed by pointers. If you want to perform
-an arithmetic operation on one or two big integers, you have to load
-the corresponding pointers into a structure called BIP ("Big Integer
-Processor"), and call the arithmetic function. When the function has
-returned, the pointer to the result of the operation can be found in
-another component of the BIP. The following functions are available:
+```text
+Usage: njvm [options] <code-file>
 
-    int bigSgn(void);                        /* sign */
-    int bigCmp(void);                        /* comparison */
-    void bigNeg(void);                       /* negation */
-    void bigAdd(void);                       /* addition */
-    void bigSub(void);                       /* subtraction */
-    void bigMul(void);                       /* multiplication */
-    void bigDiv(void);                       /* division */
-    void bigFromInt(int n);                  /* conversion int --> big */
-    int bigToInt(void);                      /* conversion big --> int */
-    void bigRead(FILE *in);                  /* read a big integer */
-    void bigPrint(FILE *out);                /* print a big integer */
-    void bigDump(FILE *out, ObjRef objRef);  /* dump a big integer */
+Options:
+  --debug      start in the interactive step debugger
+  --version    show version information and exit
+  --help       show this help and exit
+```
 
-Some of these functions accept or return ordinary integers. For the
-exact definition of each function's interface, please see the comments
-in the function's source.
+Inside the debugger, press **Enter** or `s` to execute one instruction, `p` to
+print the stack, `c` to continue normally, and `q` to stop.
 
+## Build from source
 
-4. What else is needed?
------------------------
+Requirements: a C11 compiler, CMake 3.16 or newer, and Python 3 for the
+integration checks.
 
-The library tries to detect fatal errors in using its functions (e.g.,
-null pointers to operands) as well as internal errors (which "cannot
-happen"). In either case a user-supplied error routine is called, which
-is supposed to print an error message and then to terminate the program.
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release
+ctest --test-dir build -C Release --output-on-failure
+```
 
-The library does not attempt to manage memory. For this purpose, it
-relies on a user-supplied function "ObjRef newPrimObject(int dataSize)",
-which should allocate sufficiently many bytes and return a pointer to
-the created object. For details see file "support.c" in the directory
-"tst".
+Visual Studio 2022 users can also run `scripts\build-msvc.bat` from a Developer
+Command Prompt. The executable is written to `build\njvm.exe`.
 
+## How the VM works
 
-5. What is in the directory "tst"?
-----------------------------------
+Each instruction is one 32-bit word. The highest byte contains the opcode and
+the lower 24 bits contain an immediate value. `pushc 40`, for example, places
+`40` on the operand stack. Arithmetic instructions remove their operands and
+push the result back onto that stack.
 
-Well, you may have guessed it already: these are test cases for the
-library. You can learn how to link against the library by inspecting
-the "Makefile" for the tests, and you can find a simple implementation
-of the support library.
+The implementation is intentionally split into small learner-friendly parts:
 
+- `src/main.c` parses the command line;
+- `src/vm.c` loads and executes the program;
+- `include/opcodes.h` documents the 32 opcodes and instruction encoding;
+- `tests/test_cli.py` creates tiny binaries and verifies success and failure paths;
+- `examples/` keeps the original KSP source exercises together.
 
-# Contributions
+### Instruction groups
 
-- csmk Steph Claude Kouame M.
-- ssbf Steph Sob Fouodji
+| Group | Instructions |
+| --- | --- |
+| Stack and arithmetic | `pushc`, `add`, `sub`, `mul`, `div`, `mod`, `drop`, `dup` |
+| Input and output | `rdint`, `wrint`, `rdchr`, `wrchr` |
+| Variables and frames | `pushg`, `popg`, `asf`, `rsf`, `pushl`, `popl` |
+| Comparisons | `eq`, `ne`, `lt`, `le`, `gt`, `ge` |
+| Control flow | `jmp`, `brf`, `brt`, `call`, `ret`, `halt` |
+| Return register | `pushr`, `popr` |
+
+### The NJBF file
+
+The loader accepts the original little-endian NJBF version 4 layout:
+
+```text
+4 bytes   magic: "NJBF"
+4 bytes   format version: 4
+4 bytes   instruction count
+4 bytes   global variable count
+N × 4     encoded instructions
+```
+
+Malformed files, invalid stack access, illegal opcodes, bad jumps and division
+by zero now stop with an explanatory error and a non-zero process code.
+
+## Project history
+
+Version 4.1.0 preserves the original VM format while replacing the recursive
+execution loop, fixing unsafe file parsing and completing the debugger. The old
+CLion cache and compiled binaries were removed from version control.
+
+Original contributors:
+
+- Steph Claude Kouame M.
+- Steph Sob Fouodji
 - Robert Yvon Yonke
-

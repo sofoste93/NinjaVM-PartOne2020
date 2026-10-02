@@ -1,0 +1,4 @@
+void main() {
+    writeInteger(40 + 2);
+    writeCharacter('\n');
+}

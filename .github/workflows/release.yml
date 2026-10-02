@@ -1,0 +1,93 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            binary: build/Release/njvm.exe
+            filename: njvm.exe
+            asset: NinjaVM-Windows-x64.zip
+            format: zip
+          - os: ubuntu-latest
+            binary: build/njvm
+            filename: njvm
+            asset: NinjaVM-Linux-x64.tar.gz
+            format: tar
+          - os: macos-15-intel
+            binary: build/njvm
+            filename: njvm
+            asset: NinjaVM-macOS-x64.tar.gz
+            format: tar
+          - os: macos-14
+            binary: build/njvm
+            filename: njvm
+            asset: NinjaVM-macOS-arm64.tar.gz
+            format: tar
+    runs-on: ${{ matrix.os }}
+    env:
+      WINDOWS_CERTIFICATE_BASE64: ${{ secrets.WINDOWS_CERTIFICATE_BASE64 }}
+      WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Sign Windows executable when configured
+        if: ${{ runner.os == 'Windows' && env.WINDOWS_CERTIFICATE_BASE64 != '' }}
+        shell: pwsh
+        run: |
+          $certificate = Join-Path $env:RUNNER_TEMP "publisher.pfx"
+          [IO.File]::WriteAllBytes($certificate, [Convert]::FromBase64String($env:WINDOWS_CERTIFICATE_BASE64))
+          $signtool = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin\*\x64\signtool.exe" |
+            Sort-Object FullName -Descending | Select-Object -First 1
+          & $signtool.FullName sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 `
+            /f $certificate /p $env:WINDOWS_CERTIFICATE_PASSWORD "${{ matrix.binary }}"
+
+      - name: Create archive
+        shell: bash
+        run: |
+          mkdir -p stage dist
+          cp "${{ matrix.binary }}" "stage/${{ matrix.filename }}"
+          if [ "${{ matrix.format }}" = "zip" ]; then
+            cmake -E chdir stage cmake -E tar cf "../dist/${{ matrix.asset }}" --format=zip "${{ matrix.filename }}"
+          else
+            cmake -E chdir stage cmake -E tar czf "../dist/${{ matrix.asset }}" "${{ matrix.filename }}"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: dist/${{ matrix.asset }}
+          if-no-files-found: error
+
+  publish:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Create checksums
+        run: cd artifacts && sha256sum NinjaVM-* > SHA256SUMS.txt
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: NinjaVM 4.1.0 · KSP Archive Restored
+          body: |
+            The 2020/2021 THM KSP stack machine, restored with safe execution,
+            a working debugger and native packages for the major desktop systems.
+          files: artifacts/*

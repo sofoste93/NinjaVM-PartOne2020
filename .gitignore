@@ -1,0 +1,28 @@
+# CMake and compiler output
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+Makefile
+*.o
+*.obj
+*.exe
+*.pdb
+
+# Editors and operating systems
+.idea/
+.vs/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Test caches
+__pycache__/
+*.pyc
+
+# Signing material
+*.pfx
+*.p12
